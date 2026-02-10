@@ -1,5 +1,7 @@
+import os
 from pathlib import Path
 
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 
 
@@ -17,4 +19,8 @@ class Settings(BaseSettings):
     model_config = {"env_prefix": "INGESTION_"}
 
 
-settings = Settings()
+load_dotenv()
+settings = Settings(
+    openai_api_key=os.environ.get("OPENAI_API_KEY", ""),
+    openai_model=os.environ.get("OPENAI_MODEL", "gpt-4o-mini"),
+)

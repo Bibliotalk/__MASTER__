@@ -83,29 +83,3 @@ async def generate_plan(session: Session) -> str:
     return resp.choices[0].message.content or ""
 
 
-async def generate_program(session: Session) -> str:
-    """Generate a Python script that executes the ingestion plan."""
-    output_dir = str(settings.output_dir / session.id)
-    template = _load_prompt("program.md")
-    prompt = (
-        template
-        .replace("{{name}}", session.name)
-        .replace("{{output_dir}}", output_dir)
-        .replace("{{plan}}", session.plan)
-        .replace("{{sources_json}}", _sources_json(session.sources))
-        .replace("{{existing_index_info}}", _existing_index_info(session))
-    )
-    client = _client()
-    resp = await client.chat.completions.create(
-        model=settings.openai_model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.2,
-    )
-    code = resp.choices[0].message.content or ""
-    # Strip markdown fences if the model wraps the code.
-    code = code.strip()
-    if code.startswith("```"):
-        code = code.split("\n", 1)[1]
-    if code.endswith("```"):
-        code = code.rsplit("```", 1)[0]
-    return code.strip()

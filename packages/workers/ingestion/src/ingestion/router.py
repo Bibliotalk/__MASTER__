@@ -134,19 +134,16 @@ async def edit_plan(session_id: str, body: UpdatePlanRequest) -> Session:
 
 @router.post("/sessions/{session_id}/plan/confirm")
 async def confirm_plan(session_id: str) -> dict:
-    """Confirm the plan, generate a program, and start execution."""
+    """Confirm the plan and start execution directly."""
     session = _get_session(session_id)
     if not session.plan:
         raise HTTPException(400, "No plan to confirm")
 
-    # Generate program from plan.
-    program = await ai_client.generate_program(session)
-    session.program = program
     session.stage = SessionStage.EXECUTING
     store.update(session)
 
-    # Launch execution in the background.
-    asyncio.create_task(executor.execute(session.id, program))
+    # Launch execution in the background — no codegen, just run adapters.
+    asyncio.create_task(executor.execute(session.id))
 
     return {"status": "executing", "session_id": session.id}
 

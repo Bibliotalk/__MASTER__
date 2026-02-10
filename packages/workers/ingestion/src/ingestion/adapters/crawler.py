@@ -18,7 +18,7 @@ class CrawlerAdapter(ToolAdapter):
 
         try:
             config = CrawlerRunConfig()
-            async with AsyncWebCrawler() as crawler:
+            async with AsyncWebCrawler(browser_type="firefox", verbose=True, headless=True, fail_on_browser_error=True) as crawler:
                 result = await crawler.arun(url=source.url, config=config)
 
                 if result.success:

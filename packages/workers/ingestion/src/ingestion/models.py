@@ -99,7 +99,6 @@ class Session(BaseModel):
     stage: SessionStage = SessionStage.INIT
     sources: list[Source] = []
     plan: str = ""
-    program: str = ""
     existing_index: CanonIndex | None = None
     log: list[str] = []
     created_at: datetime = Field(default_factory=_now)
