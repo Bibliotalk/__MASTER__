@@ -50,7 +50,7 @@ Session state is persisted to disk (`data/sessions/{session_id}.json`) so the se
   "sources": [
     {
       "id": "src_1",
-      "type": "web",                        // web | youtube | rss | epub | text
+      "type": "web",                        // web | youtube | rss | file
       "url": "https://stevejobsarchive.com",
       "label": "Steve Jobs Archive"
     }
@@ -107,7 +107,7 @@ class ExtractedText:
 | `CrawlerAdapter` | `crawl4ai`                   | `web`       | Crawls site, returns pages as Markdown    |
 | `YouTubeAdapter` | `yt-dlp`                     | `youtube`   | Extracts transcript only (no video)       |
 | `RSSAdapter`     | `feedparser` + `trafilatura` | `rss`       | Parses feed, fetches full text of entries |
-| `EPUBAdapter`    | `ebooklib`                   | `epub`      | Extracts chapters as Markdown             |
+| `DocAdapter`     | `markitdown`                 | `file`      | Extracts chapters as Markdown             |
 
 ### 4.2 Post-Processing Pipeline
 
@@ -196,8 +196,7 @@ packages/workers/ingestion/
 │       │   ├── crawler.py      # crawl4ai
 │       │   ├── youtube.py      # yt-dlp
 │       │   ├── rss.py          # feedparser + trafilatura
-│       │   ├── epub.py         # ebooklib
-│       │   └── local_file.py   # local file reader
+│       │   └── local_doc.py    # local document reader
 │       ├── pipeline/           # Post-processing
 │       │   ├── cleaner.py      # text cleaning
 │       │   ├── splitter.py     # section splitting
@@ -226,7 +225,6 @@ crawl4ai                        # web crawler
 yt-dlp                          # youtube transcripts
 feedparser                      # RSS parsing
 trafilatura                     # article text extraction
-ebooklib                        # EPUB reading
 markitdown                      # misc file → markdown
 python-slugify                  # filename generation
 sse-starlette                   # SSE streaming
@@ -239,7 +237,7 @@ sse-starlette                   # SSE streaming
 1. **Scaffold** — `pyproject.toml`, `main.py`, `config.py`, `models.py`
 2. **Session management** — `session.py` (file-backed CRUD)
 3. **API routes** — `router.py` (all endpoints, initially returning stubs)
-4. **Adapters** — implement one at a time: `crawler` → `youtube` → `rss` → `epub` → `local_file`
+4. **Adapters** — implement one at a time: `crawler` → `youtube` → `rss` → `local_doc`
 5. **Pipeline** — `cleaner` → `splitter` → `formatter` → `dedup`
 6. **AI client** — `ai_client.py` + prompt templates
 7. **Executor** — script runner with SSE streaming
