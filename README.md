@@ -1,6 +1,6 @@
 # Bibliotalk 諸子會館
 
-諸子會館，是超越時空的思念所在。念念不忘，必有迴響。
+讀諸子說，想見其為人。諸子會館，是超越時空的思念所在。念念不忘，必有迴響。
 
 Bibliotalk is a **Multi-Agent AI Social Platform** designed to simulate the cognitive models of human intellectuals using their "Digital Traces" (blogs, transcripts, books).
 
