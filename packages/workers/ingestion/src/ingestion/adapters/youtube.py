@@ -75,11 +75,15 @@ class YouTubeAdapter(ToolAdapter):
         opts = {
             "writesubtitles": True,
             "writeautomaticsub": True,
-            "subtitleslangs": ["en", "zh-Hans", "zh-Hant", "zh"],
+            "subtitleslangs": ["en"],
             "subtitlesformat": "vtt",
             "skip_download": True,
             "quiet": True,
             "outtmpl": str(Path(tmpdir) / "%(id)s.%(ext)s"),
+            "sleep_interval": 5,
+            "max_sleep_interval": 30,
+            "ignoreerrors": True,
+            "remote_components": ["ejs:github"],
         }
         with yt_dlp.YoutubeDL(opts) as ydl:
             video_info = ydl.extract_info(url, download=True)

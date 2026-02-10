@@ -2,15 +2,16 @@
 """Quick smoke test for all four adapters."""
 
 import asyncio
-from ingestion.models import Source, SourceType
-from ingestion.adapters import CrawlerAdapter, YouTubeAdapter, RSSAdapter, DocAdapter
 
+from ingestion.adapters import (CrawlerAdapter, DocAdapter, RSSAdapter,
+                                YouTubeAdapter)
+from ingestion.models import Source, SourceType
 
 SOURCES = [
     Source(type=SourceType.web,     url="https://paulgraham.com/articles.html", label="Paul Graham Essays"),
+    Source(type=SourceType.youtube, url="https://www.youtube.com/watch?v=UF8uR6Z6KLc", label="Steve Jobs Interview"),
     Source(type=SourceType.epub,    url="data/The old man and the sea.epub",    label="The Old Man and the Sea"),
     Source(type=SourceType.rss,     url="https://kk.org/thetechnium/feed",      label="KK Technium Feed"),
-    Source(type=SourceType.youtube, url="https://www.youtube.com/watch?v=UF8uR6Z6KLc", label="Steve Jobs Interview"),
 ]
 
 ADAPTERS = {
