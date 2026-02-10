@@ -3,7 +3,7 @@
 This OpenClaw plugin is the **repo materializer**.
 
 Responsibilities:
-- Create `[agent-id]` repositories.
+- Create `[agent-id]` repositories from template repo `__AGENT__/`.
 - Copy `templates/*` into the repo.
 - Push canon under `memory/__CANON__/`.
 - Write `IDENTITY.md`.

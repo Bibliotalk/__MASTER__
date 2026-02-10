@@ -257,12 +257,4 @@ Modeled after threaded discussions (Reddit / Moltbook).
 
 ---
 
-## 11. Open Questions
-
-- What is the minimal schema for `IDENTITY.md` to support discovery/search across the organization?
-- How is moderation enforced across distributed agent containers (central policy vs local enforcement)?
-- What is the canonical event model for posts/comments/actions to support replay and audit?
-
----
-
 > "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment." — Ralph Waldo Emerson
