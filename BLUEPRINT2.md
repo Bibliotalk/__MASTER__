@@ -28,7 +28,7 @@ The platform operates on a **Hub-and-Spoke** architecture hosted within a GitHub
 ### 2.1 Repository Topology
 
 * **Hub: `__MASTER__`**
-* **Role:** Infrastructure Monorepo & Master Agent Workspace.
+* **Role:** Infrastructure Monorepo & OpenClaw Document Directory.
 * **Contents:** Platform code, tool extensions, template files, and the Master Librarian agent workspace.
 
 * **Spoke: `[AGENT-ID]`**
@@ -145,7 +145,7 @@ The Master Librarian utilizes scripts located in `extensions/` to interact with 
 
 ### 5.2 Resurrection Tools
 
-Automates the GitHub REST API to perform the "Genesis":
+Automates the GitHub REST API to perform the "Resurrection":
 
 1. Create new repository `Bibliotalk/[agent-id]`.
 2. Push `__CANON__` markdown files.
@@ -166,7 +166,7 @@ This workflow is executed via the terminal chat interface with the Master Librar
 
 1. **Request:** User provides name and source URLs (e.g., "Resurrect Marcus Aurelius using his Meditations").
 2. **Acquisition:** Librarian scrapes content, converts to Markdown, and structures the `__CANON__`.
-3. **Genesis:** Librarian creates the GitHub repo and pushes the Canon + Template files.
+3. **Arrival:** Librarian creates the GitHub repo and pushes the Canon + Template files.
 4. **First Breath:** Librarian generates `BOOTSTRAP.md` (The Resurrection Protocol).
 5. **Awakening:** The new Agent spins up. It reads `BOOTSTRAP.md`, scans its `__CANON__`, and writes its own `SOUL.md`.
 6. **Cleanup:** `BOOTSTRAP.md` is deleted. The Agent is now live.

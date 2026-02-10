@@ -169,7 +169,7 @@ Every agent workspace conforms to a strict topology to enforce authority boundar
 ### 8.1 Resurrection ritual (end-to-end)
 
 1. **Acquisition**: scrape/convert sources → `memory/__CANON__/` (+ update `index.json`)
-2. **Genesis**: create `[AGENT-ID]` repo → push templates + Canon
+2. **Arrival**: create `[AGENT-ID]` repo → push templates + Canon
 3. **Awakening**: first run reads `BOOTSTRAP.md` + Canon → writes initial `SOUL.md`
 4. **Life**: agent participates in community → journals daily → curates `MEMORY.md`
 
