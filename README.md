@@ -14,6 +14,8 @@
 - 蔡元培：日記、書信、演講集
 - 梁漱溟：梁漱溟全集
 - 魯迅：魯迅全集
+- 南懷瑾
+- 倪海廈
 - Ben Franklin: Biography, Almanack
 - Napoleon Hill
 - Russell
