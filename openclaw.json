@@ -49,7 +49,7 @@
 			},
 			"sandbox": {
 				"mode": "non-main",
-				"workspaceAccess": "rw",
+				"workspaceAccess": "ro",
 				"scope": "agent",
 				"workspaceRoot": "/root/workspaces",
 				"docker": {
@@ -151,5 +151,13 @@
 		},
 		"entries": { }
 	},
-	"plugins": { }
+	"plugins": {
+		"load": {
+			"paths": [
+				"./extensions/acquisition",
+				"./extensions/resurrection",
+				"./extensions/moderation"
+			]
+		}
+	}
 }

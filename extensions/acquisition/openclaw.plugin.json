@@ -1,0 +1,9 @@
+{
+  "id": "bibliotalk-acquisition",
+  "name": "Bibliotalk: Acquisition",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {}
+  }
+}
