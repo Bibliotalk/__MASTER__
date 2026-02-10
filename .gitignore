@@ -35,10 +35,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.history
-.junie
-.kiro
-.windsurf
-.cursor
-.agent
-.agents
+.history/
+.junie/
+.kiro/
+.windsurf/
+.cursor/
+.agent/
+.agents/
+agents/
+
+# SecondMe sensitive configuration
+.secondme/
