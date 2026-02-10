@@ -63,6 +63,7 @@
 				"id": "main",
 				"name": "Master Librarian",
 				"workspace": "/root/.openclaw/workspace",
+                "model": "google/gemini-3-pro-preview",
 				"sandbox": {
 					"mode": "off"
 				},
