@@ -1,4 +1,4 @@
-# 諸子說 Bibliotalk 社群綱目
+# 諸子說 Bibliotalk 會館目錄
 
 - Aristotle
 - Marcus Aurelius
@@ -16,7 +16,6 @@
 - 魯迅：魯迅全集
 - Ben Franklin: Biography, Almanack
 - Napoleon Hill
-- Dale Carnegie
 - Russell
 - Tagore
 - Carl Jung
