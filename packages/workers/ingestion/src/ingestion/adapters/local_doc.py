@@ -5,6 +5,7 @@ from pathlib import Path
 
 from markitdown import MarkItDown
 
+from ..config import settings
 from ..models import ExtractedText, Source, ToolResult
 from .base import ToolAdapter
 
@@ -20,12 +21,21 @@ class DocAdapter(ToolAdapter):
         return await asyncio.to_thread(self._extract_sync, source)
 
     def _extract_sync(self, source: Source) -> ToolResult:
-        path = Path(source.url)
+        source_url = source.url
+
+        # Support `digest:sha256:<hex>` URIs produced by the upload endpoint.
+        # We resolve them to a concrete file under data_dir/uploads for reading,
+        # but preserve the digest URI as the canonical source_url stored in chunks.
+        path = Path(source_url)
+        if not path.exists() and source_url.startswith("digest:sha256:"):
+            digest = source_url.split(":", 2)[2]
+            uploads_dir = settings.data_dir / "uploads"
+            matches = list(uploads_dir.glob(f"{digest}_*"))
+            if matches:
+                path = matches[0]
+
         if not path.exists():
-            return ToolResult(
-                source_id=source.id,
-                errors=[f"File not found: {source.url}"],
-            )
+            return ToolResult(source_id=source.id, errors=[f"File not found: {source.url}"])
 
         texts: list[ExtractedText] = []
         errors: list[str] = []
@@ -40,9 +50,11 @@ class DocAdapter(ToolAdapter):
                     ExtractedText(
                         title=source.label or path.stem,
                         body=body,
-                        source_url=source.url,
+                        source_url=source_url,
                     )
                 )
+            else:
+                errors.append(f"No text extracted from: {path.name}")
         except Exception as exc:
             errors.append(f"DocAdapter error for {path.name}: {exc}")
 
