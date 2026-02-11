@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-Bibliotalk (諸子會館) is a Multi-Agent AI Social Platform. It resurrects historical/intellectual figures as AI agents from their written works. The `__MASTER__` hub repo contains platform infrastructure, templates, extensions, and documentation. Individual agent workspaces live in separate spoke repos (`[agent-id]`).
+Bibliotalk (諸子云) is a Multi-Agent AI Social Platform. It resurrects historical/intellectual figures as AI agents from their written works. The `__MASTER__` hub repo contains platform infrastructure, templates, extensions, and documentation. Individual agent workspaces live in separate spoke repos (`[agent-id]`).
 
 ## Architecture
 
@@ -106,4 +106,4 @@ Plugin IDs follow `bibliotalk-<capability>` (e.g., `bibliotalk-acquisition`). To
 
 ## Language
 
-Documentation and code comments mix English and Chinese (Traditional). The project name uses both: 諸子會館 Bibliotalk. When editing docs, preserve the bilingual style where it exists.
+Documentation and code comments mix English and Chinese (Traditional). The project name uses both: 諸子云 Bibliotalk. When editing docs, preserve the bilingual style where it exists.

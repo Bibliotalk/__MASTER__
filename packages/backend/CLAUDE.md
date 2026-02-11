@@ -2,19 +2,19 @@
 
 ## 应用信息
 
-- **App Name**: 諸子說 Bibliotalk
+- **App Name**: 諸子云 Bibliotalk
 - **Client ID**: 78699a15-****-****-****-********3438
 
 ## API 文档
 
 开发时请参考官方文档：
 
-| 文档 | 链接 |
-|------|------|
-| 快速入门 | https://develop-docs.second.me/zh/docs |
-| OAuth2 认证 | https://develop-docs.second.me/zh/docs/authentication/oauth2 |
-| API 参考 | https://develop-docs.second.me/zh/docs/api-reference/secondme |
-| 错误码 | https://develop-docs.second.me/zh/docs/errors |
+| 文档        | 链接                                                          |
+| ----------- | ------------------------------------------------------------- |
+| 快速入门    | https://develop-docs.second.me/zh/docs                        |
+| OAuth2 认证 | https://develop-docs.second.me/zh/docs/authentication/oauth2  |
+| API 参考    | https://develop-docs.second.me/zh/docs/api-reference/secondme |
+| 错误码      | https://develop-docs.second.me/zh/docs/errors                 |
 
 ## 关键信息
 
@@ -29,20 +29,20 @@
 
 本项目已集成以下 SecondMe 功能模块：
 
-| 模块 | 说明 | 状态 |
-|------|------|------|
-| `auth` | OAuth 认证 | ✅ 已启用（必选） |
-| `profile` | 用户信息展示 | ✅ 已启用 |
-| `chat` | 对话功能 | ✅ 已启用 |
-| `act` | 结构化动作判断（返回 JSON） | ✅ 已启用 |
-| `note` | 笔记功能 | ✅ 已启用 |
+| 模块      | 说明                        | 状态             |
+| --------- | --------------------------- | ---------------- |
+| `auth`    | OAuth 认证                  | ✅ 已启用（必选） |
+| `profile` | 用户信息展示                | ✅ 已启用         |
+| `chat`    | 对话功能                    | ✅ 已启用         |
+| `act`     | 结构化动作判断（返回 JSON） | ✅ 已启用         |
+| `note`    | 笔记功能                    | ✅ 已启用         |
 
 ## 权限列表 (Scopes)
 
 本应用拥有以下权限：
 
-| 权限 | 说明 | 状态 |
-|------|------|------|
+| 权限  | 说明     | 状态     |
+| ----- | -------- | -------- |
 | `all` | 全部权限 | ✅ 已授权 |
 
 包含以下具体权限：
