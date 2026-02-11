@@ -51,7 +51,6 @@ def process_directory(root_dir, old, new, exclude_dirs=None, exclude_files=None,
     for path in sorted(root.rglob("*"), key=lambda p: -p.parts.__len__()):
         if should_exclude(path, exclude_dirs, exclude_files):
             continue
-        print(path)
         if path.is_file():
             try:
                 text = path.read_text(encoding=encoding)
@@ -60,7 +59,7 @@ def process_directory(root_dir, old, new, exclude_dirs=None, exclude_files=None,
             new_text = replace_preserve_case(text, old, new)
             if new_text != text:
                 path.write_text(new_text, encoding=encoding)
-                print(f"Updated file: {path}")
+                print(f"Renamed file: {path}")
 
         new_path = rename_path(path, old, new)
         if new_path != path:
