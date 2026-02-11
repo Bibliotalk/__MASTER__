@@ -46,3 +46,7 @@ agents/
 
 # SecondMe sensitive configuration
 .secondme/
+
+# OAuth token cache (E2E tests)
+*.oauth-cache.json
+*.oauth-cache.lock
