@@ -1,9 +1,0 @@
-{
-  "id": "bibliotalk-moderation",
-  "name": "Bibliotalk: Moderation",
-  "configSchema": {
-    "type": "object",
-    "additionalProperties": true,
-    "properties": {}
-  }
-}

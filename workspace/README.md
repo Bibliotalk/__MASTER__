@@ -1,1 +1,0 @@
-This is the workspace configuration of the Master Librarian (agent ID = `main`) of Bibliotalk.

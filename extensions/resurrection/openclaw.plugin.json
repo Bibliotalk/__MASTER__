@@ -1,9 +1,0 @@
-{
-  "id": "bibliotalk-resurrection",
-  "name": "Bibliotalk: Resurrection",
-  "configSchema": {
-    "type": "object",
-    "additionalProperties": true,
-    "properties": {}
-  }
-}
