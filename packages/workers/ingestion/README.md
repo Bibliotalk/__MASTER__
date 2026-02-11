@@ -68,28 +68,28 @@ All endpoints are under `/api/v1/ingestion`.
 
 ### Sessions
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/sessions` | `POST` | Create a new ingestion session |
-| `/sessions/{id}` | `GET` | Get session state and progress |
+| Endpoint         | Method | Description                    |
+| ---------------- | ------ | ------------------------------ |
+| `/sessions`      | `POST` | Create a new ingestion session |
+| `/sessions/{id}` | `GET`  | Get session state and progress |
 
 ### Sources
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/sessions/{id}/sources/suggest` | `GET` | AI suggests sources for the person's name |
-| `/sessions/{id}/sources` | `POST` | Submit confirmed sources |
-| `/sessions/{id}/upload` | `POST` | Upload a local document file |
+| Endpoint                         | Method | Description                               |
+| -------------------------------- | ------ | ----------------------------------------- |
+| `/sessions/{id}/sources/suggest` | `GET`  | AI suggests sources for the person's name |
+| `/sessions/{id}/sources`         | `POST` | Submit confirmed sources                  |
+| `/sessions/{id}/upload`          | `POST` | Upload a local document file              |
 
 ### Plan & Execution
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/sessions/{id}/plan` | `GET` | Generate an ingestion plan from sources |
-| `/sessions/{id}/plan` | `PATCH` | Edit the plan |
-| `/sessions/{id}/plan/confirm` | `POST` | Confirm plan → auto-generate program and execute |
-| `/sessions/{id}/execute/stream` | `GET` | SSE stream of execution progress (real-time) |
-| `/sessions/{id}/output` | `GET` | List generated canon files |
+| Endpoint                        | Method  | Description                                      |
+| ------------------------------- | ------- | ------------------------------------------------ |
+| `/sessions/{id}/plan`           | `GET`   | Generate an ingestion plan from sources          |
+| `/sessions/{id}/plan`           | `PATCH` | Edit the plan                                    |
+| `/sessions/{id}/plan/confirm`   | `POST`  | Confirm plan → auto-generate program and execute |
+| `/sessions/{id}/execute/stream` | `GET`   | SSE stream of execution progress (real-time)     |
+| `/sessions/{id}/output`         | `GET`   | List generated canon files                       |
 
 ### Example Workflow (cURL)
 
@@ -126,15 +126,15 @@ curl http://localhost:8000/api/v1/ingestion/sessions/abc123/output
 
 Environment variables (via `.env` or shell):
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `OPENAI_API_KEY` | (required) | Your OpenAI API key |
-| `OPENAI_MODEL` | `gpt-4o-mini` | LLM model for planning & code generation |
-| `OPENAI_BASE_URL` | `https://api.openai.com/v1` | LLM API endpoint (supports compatible services) |
-| `INGESTION_DATA_DIR` | `data` | Where sessions and uploads are stored |
-| `INGESTION_OUTPUT_DIR` | `output` | Where canon archives are written |
-| `INGESTION_HOST` | `0.0.0.0` | Server host |
-| `INGESTION_PORT` | `8000` | Server port |
+| Variable               | Default                     | Description                                     |
+| ---------------------- | --------------------------- | ----------------------------------------------- |
+| `OPENAI_API_KEY`       | (required)                  | Your OpenAI API key                             |
+| `OPENAI_MODEL`         | `gpt-4o-mini`               | LLM model for planning & code generation        |
+| `OPENAI_BASE_URL`      | `https://api.openai.com/v1` | LLM API endpoint (supports compatible services) |
+| `INGESTION_DATA_DIR`   | `data`                      | Where sessions and uploads are stored           |
+| `INGESTION_OUTPUT_DIR` | `output`                    | Where canon archives are written                |
+| `INGESTION_HOST`       | `0.0.0.0`                   | Server host                                     |
+| `INGESTION_PORT`       | `8000`                      | Server port                                     |
 
 ## Architecture
 
