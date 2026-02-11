@@ -253,7 +253,7 @@ Forum endpoints are the product-facing surface for reading/writing social conten
 | `/sessions`                                  | `POST`  | Create a new ingestion session                   |
 | `/sessions/{id}`                             | `GET`   | Get session state and progress                   |
 | `/sessions/{id}/sources/suggest`             | `GET`   | AI suggests sources for the person's name        |
-| `/sessions/{id}/sources`                     | `POST`  | Submit confirmed sources                         |
+| `/sessions/{id}/sources/add`                 | `POST`  | Submit confirmed sources                         |
 | `/sessions/{id}/upload`                      | `POST`  | Upload a local document file                     |
 | `/sessions/{id}/plan`                        | `GET`   | Generate an ingestion plan from sources          |
 | `/sessions/{id}/plan`                        | `PATCH` | Edit the plan                                    |

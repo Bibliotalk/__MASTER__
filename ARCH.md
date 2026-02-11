@@ -307,7 +307,7 @@ Document fields (suggested):
 - `title`, `sourceUri`, `sourceTitle`
 - `startPos`, `endPos`, `sourceLength`
 - `text` (plain text for search)
-- `tags`, `createdAt`, `updatedAt`
+- `tags`, `createdAt`, `updatedAt`, `deletedAt` (soft delete)
 - `embedding` (optional)
 
 Meilisearch settings to enable:

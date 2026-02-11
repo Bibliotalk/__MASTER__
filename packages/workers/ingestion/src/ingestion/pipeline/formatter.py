@@ -1,85 +1,59 @@
 from __future__ import annotations
 
-import re
 from datetime import datetime, timezone
-from pathlib import Path
+from uuid import uuid4
 
-from slugify import slugify
-
-from ..models import CanonIndex, ExtractedText, IndexEntry, SourceType
+from ..models import ExtractedText, SourceType
 from .cleaner import clean_text
 from .dedup import Deduplicator, compute_hash
 from .splitter import split_text
 
 
-def format_and_write(
+def format_chunks(
     extracted: ExtractedText,
     *,
     source_type: SourceType,
-    output_dir: Path,
-    index: CanonIndex,
     dedup: Deduplicator,
     max_words: int = 4000,
-) -> list[str]:
-    """Clean, split, deduplicate, format, and write canon files.
-
-    Returns the list of filenames written (empty if all duplicates).
-    """
-    output_dir.mkdir(parents=True, exist_ok=True)
+) -> list[dict]:
+    """Clean, split, deduplicate, and return chunk dicts."""
     cleaned = clean_text(extracted.body)
     if not cleaned:
         return []
 
     sections = split_text(cleaned, max_words=max_words)
-    written: list[str] = []
+    chunks = []
 
     for i, section in enumerate(sections):
         content_hash = compute_hash(section)
-        if dedup.is_duplicate(
-            content_hash=content_hash, source_url=extracted.source_url
-        ):
+        if dedup.is_duplicate(content_hash=content_hash, source_url=extracted.source_url):
             continue
 
-        # Build filename: YYYY-title-slug[-partN].md
-        date_prefix = extracted.date[:4] if extracted.date else "0000"
-        title_slug = slugify(extracted.title, max_length=60)
-        suffix = f"-part{i + 1}" if len(sections) > 1 else ""
-        filename = f"{date_prefix}-{title_slug}{suffix}.md"
-
-        # YAML frontmatter
-        frontmatter = (
-            f"---\n"
-            f"title: \"{_escape_yaml(extracted.title)}\"\n"
-            f"source_url: \"{extracted.source_url}\"\n"
-            f"source_type: \"{source_type.value}\"\n"
-        )
-        if extracted.date:
-            frontmatter += f"date: \"{extracted.date}\"\n"
-        frontmatter += f"---\n\n"
-
-        full_content = frontmatter + section
-        (output_dir / filename).write_text(full_content, encoding="utf-8")
-
+        # TODO: startPos/endPos are computed by summing section lengths, which can be inaccurate if split_text drops/normalizes separators or whitespace between sections (and it is also O(n^2) across chunks). Consider having split_text return offsets, or maintain a running cursor that accounts for whatever delimiter/joining logic is used.
         word_count = len(section.split())
-        entry_id = f"canon_{len(index.entries) + 1:04d}"
+        # Calculate start/end positions
+        start_pos = sum(len(s) for s in sections[:i])
+        end_pos = start_pos + len(section)
 
-        index.entries.append(
-            IndexEntry(
-                id=entry_id,
-                filename=filename,
-                title=extracted.title,
-                source_url=extracted.source_url,
-                source_type=source_type,
-                date=extracted.date,
-                content_hash=f"sha256:{content_hash}",
-                word_count=word_count,
-            )
-        )
+        chunk = {
+            "id": f"chunk_{uuid4().hex}",
+            "kind": "canon",
+            "title": extracted.title + (f" (Part {i+1})" if len(sections) > 1 else ""),
+            "text": section,
+            "sourceUri": extracted.source_url,
+            "sourceTitle": extracted.title,
+            "sourceType": source_type.value,
+            "contentHash": f"sha256:{content_hash}",
+            "startPos": start_pos,
+            "endPos": end_pos,
+            "sourceLength": len(cleaned),
+            "wordCount": word_count,
+            "tags": [],
+            "createdAt": datetime.now(timezone.utc).isoformat(),
+            "updatedAt": datetime.now(timezone.utc).isoformat(),
+        }
+
         dedup.add(content_hash=content_hash, source_url=extracted.source_url)
-        written.append(filename)
+        chunks.append(chunk)
 
-    return written
-
-
-def _escape_yaml(s: str) -> str:
-    return s.replace('"', '\\"')
+    return chunks

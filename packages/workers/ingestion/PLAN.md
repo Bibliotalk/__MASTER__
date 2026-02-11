@@ -73,7 +73,7 @@ All endpoints are under `/api/v1/ingestion`.
 | `POST`  | `/sessions`                      | Create session. Body: `{ name }`                       |
 | `GET`   | `/sessions/{id}`                 | Get session state                                      |
 | `GET`   | `/sessions/{id}/sources/suggest` | AI suggests sources for the name. Returns suggestions. |
-| `POST`  | `/sessions/{id}/sources`         | Submit/update source list. Body: `{ sources: [...] }`  |
+| `POST`  | `/sessions/{id}/sources/add`     | Submit/update source list. Body: `{ sources: [...] }`  |
 | `GET`   | `/sessions/{id}/plan`            | AI generates ingestion plan from confirmed sources     |
 | `PATCH` | `/sessions/{id}/plan`            | User edits the plan                                    |
 | `POST`  | `/sessions/{id}/plan/confirm`    | Confirm plan → AI generates program and executes it    |

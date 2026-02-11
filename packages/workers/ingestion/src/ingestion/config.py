@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     openai_model: str = "gpt-4o-mini"
 
+    worker_secret: str = ""
+    api_base_url: str = "http://localhost:4000"
+
     host: str = "0.0.0.0"
     port: int = 8000
 

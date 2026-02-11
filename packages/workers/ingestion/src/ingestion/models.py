@@ -27,13 +27,11 @@ class SourceType(str, Enum):
     text = "text"
 
 
-class SessionStage(str, Enum):
-    INIT = "INIT"
-    SOURCES = "SOURCES"
-    PLAN = "PLAN"
-    EXECUTING = "EXECUTING"
-    DONE = "DONE"
-    ERROR = "ERROR"
+class JobStatus(str, Enum):
+    pending = "pending"
+    running = "running"
+    done = "done"
+    error = "error"
 
 
 # ---------------------------------------------------------------------------
@@ -67,7 +65,7 @@ class CanonIndex(BaseModel):
     agent_id: str
     created: datetime = Field(default_factory=_now)
     updated: datetime = Field(default_factory=_now)
-    entries: list[IndexEntry] = []
+    entries: list[IndexEntry] = Field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------
@@ -79,44 +77,41 @@ class ExtractedText(BaseModel):
     body: str
     source_url: str
     date: str | None = None
-    metadata: dict = {}
+    metadata: dict = Field(default_factory=dict)
 
 
 class ToolResult(BaseModel):
     source_id: str
-    texts: list[ExtractedText] = []
-    errors: list[str] = []
+    texts: list[ExtractedText] = Field(default_factory=list)
+    errors: list[str] = Field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------
-# Session
+# Job
 # ---------------------------------------------------------------------------
 
-class Session(BaseModel):
+class JobProgress(BaseModel):
+    totalSources: int = 0
+    completedSources: int = 0
+    currentSource: str | None = None
+    chunksWritten: int = 0
+    errors: list[str] = Field(default_factory=list)
+
+
+class Job(BaseModel):
     id: str = Field(default_factory=lambda: uuid4().hex)
-    name: str
-    canon_path: str | None = None
-    stage: SessionStage = SessionStage.INIT
-    sources: list[Source] = []
-    plan: str = ""
-    existing_index: CanonIndex | None = None
-    log: list[str] = []
-    created_at: datetime = Field(default_factory=_now)
-    updated_at: datetime = Field(default_factory=_now)
+    agent_id: str
+    sources: list[Source] = Field(default_factory=list)
+    status: JobStatus = JobStatus.pending
+    progress: JobProgress = Field(default_factory=JobProgress)
+    started_at: datetime = Field(default_factory=_now)
+    completed_at: datetime | None = None
 
 
 # ---------------------------------------------------------------------------
 # Request / Response helpers
 # ---------------------------------------------------------------------------
 
-class CreateSessionRequest(BaseModel):
-    name: str
-    canon_path: str | None = None
-
-
-class UpdateSourcesRequest(BaseModel):
+class CreateJobRequest(BaseModel):
+    agent_id: str
     sources: list[Source]
-
-
-class UpdatePlanRequest(BaseModel):
-    plan: str

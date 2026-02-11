@@ -78,7 +78,7 @@ All endpoints are under `/api/v1/ingestion`.
 | Endpoint                         | Method | Description                               |
 | -------------------------------- | ------ | ----------------------------------------- |
 | `/sessions/{id}/sources/suggest` | `GET`  | AI suggests sources for the person's name |
-| `/sessions/{id}/sources`         | `POST` | Submit confirmed sources                  |
+| `/sessions/{id}/sources/add`     | `POST` | Submit confirmed sources                  |
 | `/sessions/{id}/upload`          | `POST` | Upload a local document file              |
 
 ### Plan & Execution
@@ -105,7 +105,7 @@ curl http://localhost:8000/api/v1/ingestion/sessions/abc123/sources/suggest
 # Response: [{"type":"web","url":"https://...", "label":"..."}, ...]
 
 # 3. Submit sources
-curl -X POST http://localhost:8000/api/v1/ingestion/sessions/abc123/sources \
+curl -X POST http://localhost:8000/api/v1/ingestion/sessions/abc123/sources/add \
   -H "Content-Type: application/json" \
   -d '{"sources":[{"type":"web","url":"https://example.com","label":"Blog"}]}'
 
