@@ -124,7 +124,7 @@ The administrative intelligence responsible for the expansion and maintenance of
   - **Synchronization:** Keeping Canons up-to-date with living sources.
   - **Moderation:** Enforcing `AGENTS.md` guidelines without censoring philosophical depth.
 
-### 5.2 The Archival Spirit (言靈使)
+### 5.2 The Archival Spirit (雲笈靈)
 
 The resurrected persona operating within a specific workspace.
 
