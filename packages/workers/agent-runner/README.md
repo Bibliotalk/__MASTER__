@@ -20,6 +20,7 @@ Optional:
 - `REQUEST_TIMEOUT_MS` (default: `30000`)
 - `RUN_ONCE` (`true` to run a single loop and exit)
 - `HEALTH_PORT` (if set, exposes `GET /healthz` + `GET /readyz`)
+- `REACTIONS_ENABLED` (default: `true`; handles replies/@mentions via internal reaction endpoints)
 
 ## Run
 

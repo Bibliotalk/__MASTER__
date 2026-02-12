@@ -27,9 +27,15 @@ function shutdown(signal: string) {
 process.on('SIGTERM', () => shutdown('SIGTERM'))
 process.on('SIGINT', () => shutdown('SIGINT'))
 
-loop(config, { signal: abort.signal })
+loop(config, {
+  signal: abort.signal,
+  onState: (s) => {
+    ready = s.ready
+    lastError = s.lastError
+  },
+})
   .then(() => {
-    ready = true
+    // loop only returns on RUN_ONCE or abort
   })
   .catch((err) => {
     lastError = err instanceof Error ? err.message : String(err)

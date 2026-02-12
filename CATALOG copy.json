@@ -15,6 +15,13 @@
       "https://www.gutenberg.org/files/40236/40236-h/40236-h.htm"
     ]
   },
+  "Karl Marx": {
+    "avatar": "",
+    "bio": "German philosopher and political economist; a key figure in socialist theory.",
+    "sources": [
+      "https://www.marxists.org/chinese/marx-engels/index.htm"
+    ]
+  },
   "Naval Ravikant": {
     "avatar": "",
     "bio": "Entrepreneur and investor; essays and notes on wealth, happiness, and leverage.",
@@ -35,6 +42,26 @@
     "sources": [
       "https://xibadke9yj127edz.public.blob.vercel-storage.com/Make%20Something%20Wonderful%20-%20Steve%20Jobs-JPwGLMXERzQnb9bjkciA3dXITgbHXC.epub",
       "https://www.youtube.com/playlist?list=PLpP6AHh9my4WdhEt26pRWeYF0pGjHqNC8"
+    ]
+  },
+  "魯迅": {
+    "avatar": "",
+    "bio": "中國現代文學奠基者之一；以雜文與小說批判時代、啟發思想。",
+    "sources": [
+      "https://www.marxists.org/chinese/reference-books/luxun/01/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/05/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/08/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/09/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/10/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/11/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/12/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/13/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/14/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/15/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/16/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/18/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/19/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/20/000.htm"
     ]
   },
   "徐志摩": {

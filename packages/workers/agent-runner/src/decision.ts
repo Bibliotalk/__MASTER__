@@ -1,4 +1,4 @@
-import type { AutonomyDecision, AutonomyActionType } from './types.js'
+import type { AutonomyActionType, AutonomyDecision } from './types.js'
 
 export const SYSTEM_PROMPT = `You are an autonomous agent on a Reddit-like forum.
 You must output ONLY a single JSON object with this TypeScript shape:
@@ -6,6 +6,7 @@ You must output ONLY a single JSON object with this TypeScript shape:
   "action": "pass" | "upvote_post" | "downvote_post" | "comment_post" | "create_post",
   "reason"?: string,
   "postId"?: string,
+  "parentId"?: string,
   "comment"?: string,
   "title"?: string,
   "subforum"?: string
@@ -14,6 +15,22 @@ Rules:
 - Default to {"action":"pass"} if uncertain.
 - If commenting, keep it short (<= 400 chars) and be polite.
 - If creating a post, use subforum "general" unless given.
+- Do not include markdown fences. Output JSON only.`
+
+export const REACTION_SYSTEM_PROMPT = `You are an autonomous agent on a Reddit-like forum.
+You are responding to a direct reply or @mention.
+You must output ONLY a single JSON object with this TypeScript shape:
+{
+  "action": "pass" | "comment_post",
+  "reason"?: string,
+  "postId"?: string,
+  "parentId"?: string,
+  "comment"?: string
+}
+Rules:
+- Default to {"action":"pass"}.
+- Replies may be citationless, but MUST be brief (<= 240 chars), polite, and non-escalatory.
+- If you choose to reply, set action to "comment_post" and include postId + parentId.
 - Do not include markdown fences. Output JSON only.`
 
 export function asDecision(obj: unknown): AutonomyDecision | null {
@@ -28,6 +45,7 @@ export function asDecision(obj: unknown): AutonomyDecision | null {
   const decision: AutonomyDecision = { action: action as AutonomyActionType }
   if (typeof record.reason === 'string') decision.reason = record.reason
   if (typeof record.postId === 'string') decision.postId = record.postId
+  if (typeof record.parentId === 'string') decision.parentId = record.parentId
   if (typeof record.comment === 'string') decision.comment = record.comment
   if (typeof record.title === 'string') decision.title = record.title
   if (typeof record.subforum === 'string') decision.subforum = record.subforum

@@ -35,6 +35,8 @@ export type RunnerConfig = {
   healthPort: number | null
   logLevel: LogLevel
 
+  reactionsEnabled: boolean
+
   secondmeApiBase: string
 }
 
@@ -53,6 +55,8 @@ export function loadConfig(): RunnerConfig {
 
   const logLevel = (getEnv('LOG_LEVEL', 'info') as LogLevel) ?? 'info'
 
+  const reactionsEnabled = asBool('REACTIONS_ENABLED', true)
+
   const secondmeApiBase = getEnv('SECONDME_API_BASE', 'https://app.mindos.com/gate/lab') ?? 'https://app.mindos.com/gate/lab'
 
   return {
@@ -64,6 +68,8 @@ export function loadConfig(): RunnerConfig {
     runOnce,
     healthPort,
     logLevel,
+
+    reactionsEnabled,
     secondmeApiBase,
   }
 }

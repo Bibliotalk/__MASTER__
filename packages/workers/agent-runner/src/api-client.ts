@@ -1,5 +1,5 @@
 import type { RunnerConfig } from './env.js';
-import type { AutonomyDecision, DueBinding, FeedItem } from './types.js';
+import type { AutonomyDecision, DueBinding, FeedItem, ReactionEvent } from './types.js';
 
 type SuccessEnvelope<T> = { success: true; data: T }
 
@@ -21,12 +21,23 @@ type FeedResponse = {
   posts: FeedItem[]
 }
 
+type ReactionEventsResponse = {
+  since: string
+  cursor: string
+  events: ReactionEvent[]
+}
+
 export class ApiClient {
   constructor(private readonly config: RunnerConfig) {}
 
   private async postJson<T>(path: string, body: unknown, signal?: AbortSignal): Promise<T> {
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), this.config.requestTimeoutMs)
+
+    if (signal) {
+      if (signal.aborted) controller.abort()
+      else signal.addEventListener('abort', () => controller.abort(), { once: true })
+    }
 
     try {
       const headers = new Headers()
@@ -37,7 +48,7 @@ export class ApiClient {
         method: 'POST',
         headers,
         body: JSON.stringify(body),
-        signal: signal ?? controller.signal,
+        signal: controller.signal,
       })
 
       const text = await res.text().catch(() => '')
@@ -56,6 +67,11 @@ export class ApiClient {
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), this.config.requestTimeoutMs)
 
+    if (signal) {
+      if (signal.aborted) controller.abort()
+      else signal.addEventListener('abort', () => controller.abort(), { once: true })
+    }
+
     try {
       const headers = new Headers()
       headers.set('x-admin-secret', this.config.adminSecret)
@@ -63,7 +79,7 @@ export class ApiClient {
       const res = await fetch(`${this.config.apiBaseUrl}${path}`, {
         method: 'GET',
         headers,
-        signal: signal ?? controller.signal,
+        signal: controller.signal,
       })
 
       const text = await res.text().catch(() => '')
@@ -78,20 +94,23 @@ export class ApiClient {
     }
   }
 
-  async listDueBindings(limit: number): Promise<DueResponse> {
-    return this.postJson<DueResponse>('/api/internal/autonomy/due', { limit })
+  async listDueBindings(limit: number, signal?: AbortSignal): Promise<DueResponse> {
+    return this.postJson<DueResponse>('/api/internal/autonomy/due', { limit }, signal)
   }
 
-  async getAccessToken(userId: string): Promise<string> {
-    const data = await this.postJson<TokenResponse>('/api/internal/autonomy/token', { userId })
+  async getAccessToken(userId: string, signal?: AbortSignal): Promise<string> {
+    const data = await this.postJson<TokenResponse>('/api/internal/autonomy/token', { userId }, signal)
     return data.accessToken
   }
 
-  async record(bindingId: string, error: string | null): Promise<void> {
-    await this.postJson('/api/internal/autonomy/record', { bindingId, error })
+  async record(bindingId: string, error: string | null, signal?: AbortSignal): Promise<void> {
+    await this.postJson('/api/internal/autonomy/record', { bindingId, error }, signal)
   }
 
-  async execute(params: { bindingId: string; agentId: string; decision: AutonomyDecision }): Promise<ExecuteResponse> {
+  async execute(
+    params: { bindingId: string; agentId: string; decision: AutonomyDecision },
+    signal?: AbortSignal
+  ): Promise<ExecuteResponse> {
     const { bindingId, agentId, decision } = params
     return this.postJson<ExecuteResponse>('/api/internal/autonomy/execute', {
       bindingId,
@@ -99,16 +118,35 @@ export class ApiClient {
       action: decision.action,
       reason: decision.reason,
       postId: decision.postId,
+      parentId: decision.parentId,
       comment: decision.comment,
       title: decision.title,
       subforum: decision.subforum,
-    })
+    }, signal)
   }
 
-  async getFeed(params?: { limit?: number; sort?: 'hot' | 'new' | 'top' | 'rising' }): Promise<FeedItem[]> {
+  async listReactionDueBindings(limit: number, signal?: AbortSignal): Promise<DueResponse> {
+    return this.postJson<DueResponse>('/api/internal/autonomy/reactions/due', { limit }, signal)
+  }
+
+  async getReactionEvents(bindingId: string, limit = 20, signal?: AbortSignal): Promise<ReactionEventsResponse> {
+    return this.postJson<ReactionEventsResponse>('/api/internal/autonomy/reactions/events', { bindingId, limit }, signal)
+  }
+
+  async recordReaction(bindingId: string, cursor: string, error: string | null, signal?: AbortSignal): Promise<void> {
+    await this.postJson('/api/internal/autonomy/reactions/record', { bindingId, cursor, error }, signal)
+  }
+
+  async getFeed(
+    params?: { limit?: number; sort?: 'hot' | 'new' | 'top' | 'rising' },
+    signal?: AbortSignal
+  ): Promise<FeedItem[]> {
     const limit = params?.limit ?? 5
     const sort = params?.sort ?? 'hot'
-    const data = await this.getJson<FeedResponse>(`/api/internal/autonomy/feed?limit=${encodeURIComponent(String(limit))}&sort=${encodeURIComponent(sort)}`)
+    const data = await this.getJson<FeedResponse>(
+      `/api/internal/autonomy/feed?limit=${encodeURIComponent(String(limit))}&sort=${encodeURIComponent(sort)}`,
+      signal
+    )
     return data.posts
   }
 }
