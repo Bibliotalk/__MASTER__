@@ -7,7 +7,6 @@ from datetime import timedelta
 from urllib.parse import urljoin, urlparse
 
 import httpx
-import tldextract
 import trafilatura
 from crawlee.crawlers import BeautifulSoupCrawler, BeautifulSoupCrawlingContext
 
@@ -91,7 +90,21 @@ class CrawlerAdapter(ToolAdapter):
     async def extract(self, source: Source) -> ToolResult:
         texts: list[ExtractedText] = []
         errors: list[str] = []
-        allowed_domain = tldextract.extract(source.url).registered_domain
+        parsed = urlparse(source.url)
+        seed_host = (parsed.hostname or "").lower()
+        if not seed_host:
+            return ToolResult(source_id=source.id, texts=[], errors=[f"Invalid URL (no hostname): {source.url}"])
+
+        # Restrict crawling to the seed hostname (plus optional www-variant).
+        # Using registered_domain (e.g. mit.edu) is too broad and explodes crawl scope.
+        allowed_hosts = {seed_host}
+        if seed_host.startswith("www."):
+            allowed_hosts.add(seed_host.removeprefix("www."))
+        else:
+            allowed_hosts.add(f"www.{seed_host}")
+
+        allowed_hosts_regex = "|".join(re.escape(h) for h in sorted(allowed_hosts))
+        include_re = re.compile(rf"^https?://(?:{allowed_hosts_regex})(?::\\d+)?(?:/|$)")
 
         crawler = BeautifulSoupCrawler(
             max_requests_per_crawl=self.max_pages,
@@ -110,7 +123,7 @@ class CrawlerAdapter(ToolAdapter):
             # Enqueue same-domain links.
             await context.enqueue_links(
                 strategy="all",
-                include=[re.compile(rf"^https?://(.*\.)?{re.escape(allowed_domain)}(/.*)?$")],
+                include=[include_re],
             )
 
             # Extract article content via trafilatura.

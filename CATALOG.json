@@ -1,11 +1,4 @@
 {
-  "Aristotle": {
-    "avatar": "",
-    "bio": "Ancient Greek philosopher; foundational works in logic, ethics, metaphysics, and politics.",
-    "sources": [
-      "http://classics.mit.edu/Browse/browse-Aristotle.html"
-    ]
-  },
   "Benjamin Franklin": {
     "avatar": "",
     "bio": "American polymath and Founding Father; writer, inventor, and statesman.",
@@ -15,19 +8,10 @@
       "https://www.gutenberg.org/files/40236/40236-h/40236-h.htm"
     ]
   },
-  "Naval Ravikant": {
-    "avatar": "",
-    "bio": "Entrepreneur and investor; essays and notes on wealth, happiness, and leverage.",
-    "sources": [
-      "https://nav.al/archive"
-    ]
-  },
   "Paul Graham": {
     "avatar": "",
     "bio": "Essayist and programmer; co-founder of Y Combinator.",
-    "sources": [
-      "https://paulgraham.com/articles.html"
-    ]
+    "sources": ["https://paulgraham.com/articles.html"]
   },
   "Steve Jobs": {
     "avatar": "",
