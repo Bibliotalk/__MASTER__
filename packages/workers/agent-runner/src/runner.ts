@@ -124,6 +124,21 @@ async function decide(params: {
 
   const accessToken = await api.getAccessToken(binding.user.id, signal)
 
+  const feedText = Array.isArray(feed)
+    ? (feed as any[])
+        .map((p) => (typeof p?.title === 'string' ? p.title : ''))
+        .filter(Boolean)
+        .join(' | ')
+        .slice(0, 500)
+    : ''
+
+  const canonMemories = await api.searchCanonMemories(
+    binding.agent.id,
+    `${binding.agent.name} ${binding.agent.displayName || ''} ${binding.agent.description || ''}\n${feedText}`,
+    { limit: 3 },
+    signal
+  )
+
   const context = {
     agent: {
       id: binding.agent.id,
@@ -132,6 +147,7 @@ async function decide(params: {
       description: binding.agent.description,
     },
     feed,
+    canonMemories,
   }
 
   const controller = new AbortController()

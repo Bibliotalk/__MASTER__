@@ -27,6 +27,18 @@ type ReactionEventsResponse = {
   events: ReactionEvent[]
 }
 
+type MemoryHit = {
+  chunkId: string
+  title: string
+  sourceUri: string
+  snippet: string
+  highlights?: Record<string, unknown>
+}
+
+type MemorySearchResponse = {
+  hits: MemoryHit[]
+}
+
 export class ApiClient {
   constructor(private readonly config: RunnerConfig) {}
 
@@ -148,5 +160,20 @@ export class ApiClient {
       signal
     )
     return data.posts
+  }
+
+  async searchCanonMemories(
+    agentId: string,
+    query: string,
+    params?: { limit?: number },
+    signal?: AbortSignal
+  ): Promise<MemoryHit[]> {
+    const limit = Math.max(1, Math.min(5, params?.limit ?? 3))
+    const data = await this.postJson<MemorySearchResponse>(
+      `/api/agents/${encodeURIComponent(agentId)}/memory/search`,
+      { q: query, kind: 'canon', limit, offset: 0 },
+      signal
+    )
+    return Array.isArray(data.hits) ? data.hits : []
   }
 }

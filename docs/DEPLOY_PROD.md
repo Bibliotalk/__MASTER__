@@ -1,9 +1,9 @@
-# Production deployment (Vercel Web + Railway API + Turso)
+# Production deployment (Vercel Web + Fly.io API + Turso)
 
 This runbook deploys:
 
 - Web: Vercel (Next.js)
-- API (+ in-process autonomy runner): Railway (Node)
+- API (+ in-process autonomy runner): Fly.io (Node)
 - DB: Turso (LibSQL)
 
 Ingestion is omitted for now.
@@ -21,31 +21,35 @@ The API supports passing the token separately via `DATABASE_AUTH_TOKEN` (recomme
 
 ---
 
-## 2) Deploy API on Railway
+## 2) Deploy API on Fly.io
 
-### 2.1 Create the service
+This repo is a monorepo and does not have a root `package.json`, so you should deploy from the API package directory.
 
-- Create a Railway project.
-- Add a service from your GitHub repo.
-- Set **Root Directory** to `packages/api`.
+Why you saw `yarn: not found`:
 
-### 2.2 Build & start commands
+- `flyctl launch` tried to auto-generate a Dockerfile and install Litestream (SQLite replication) via `yarn add ...`.
+- Your production DB is Turso (remote LibSQL), so you **do not need Litestream**.
+- The generator environment didn’t have `yarn`, so it failed.
 
-Use:
+Fix: deploy using the checked-in `packages/api/Dockerfile` and `packages/api/fly.toml`.
 
-- Build: `yarn build`
-- Start: `yarn start`
+### 2.1 Create the Fly app
 
-Notes:
-- `yarn build` runs `prisma generate && tsc`.
-- `postinstall` also runs `prisma generate` for safety.
+From the repo root:
+
+- `cd packages/api`
+- `fly launch` (use the existing `fly.toml` if prompted)
+
+### 2.2 Build & runtime
+
+Fly builds using the Dockerfile and runs `node dist/src/index.js`.
 
 ### 2.3 Environment variables (API)
 
-Required (production):
+Required (production secrets):
 
 - `NODE_ENV=production`
-- `PORT` (Railway provides this automatically)
+- `PORT` is set to `4000` in `packages/api/fly.toml`.
 - `FRONTEND_URL=https://<your-vercel-domain>`
 - `SESSION_SECRET=<random-long-secret>`
 - `ADMIN_SECRET=<random-long-secret>`
@@ -81,17 +85,15 @@ Ingestion (omitted):
 
 ### 2.4 Run database migrations
 
-Railway doesn’t automatically run Prisma migrations.
+After the app is deployed and secrets are set, run a one-off command:
 
-After the service is deployed and env vars are set, run a one-off command in the Railway service shell:
-
-- `yarn db:migrate:deploy`
+- `fly ssh console -C "cd /app && yarn db:deploy"`
 
 (You can re-run safely on subsequent deploys.)
 
 ### 2.5 Verify API health
 
-- `GET /api/health` on your Railway domain.
+- `GET /api/health` on your Fly domain.
 - If autonomy is enabled, you can manually trigger one tick (admin-only):
   - `POST /api/internal/autonomy/tick` with header `x-admin-secret: <ADMIN_SECRET>`
 
@@ -107,15 +109,28 @@ Environment variables (Web):
 
 - `API_URL=https://<your-railway-api-domain>`
 
+Example:
+
+- `API_URL=https://<your-fly-app>.fly.dev`
+
 This is used by the rewrite in `packages/web/next.config.js` to forward `/api/*` to the API service.
 
 ---
 
 ## 4) Production notes / gotchas
 
+### 4.0 Fly machine restarts (OOM)
+
+If logs show `Process appears to have been OOM killed!`, the Machine doesn’t have enough memory for Node + Prisma.
+
+Fix options:
+
+- Increase memory: `fly scale memory 1024 -a <app>`
+- Or keep it smaller but cap Node heap (this repo sets `NODE_OPTIONS=--max-old-space-size=384` in `packages/api/fly.toml`).
+
 ### 4.1 Autonomy runner + scaling
 
-The autonomy runner is in-process in the API. If you scale the Railway service to >1 instance **and** `AUTONOMY_ENABLED=true`, you will run autonomy ticks multiple times.
+The autonomy runner is in-process in the API. If you scale the Fly app to >1 machine **and** `AUTONOMY_ENABLED=true`, you will run autonomy ticks multiple times.
 
 Recommendation:
 
@@ -126,4 +141,4 @@ Recommendation:
 
 Production should not use local SQLite files. Turso replaces `file:./dev.db`.
 
-Railway/Vercel filesystems are not suitable for persistent caches; use external storage if you later re-enable ingestion.
+Fly/Vercel filesystems are not suitable for persistent caches; use external storage if you later re-enable ingestion.

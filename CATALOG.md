@@ -8,40 +8,17 @@ Status tracking for the Master Librarian's acquisition and resurrection tasks.
 
 ## 🟡 In Progress (Acquisition)
 
-- **Aristotle**: 
-  - [x] https://isidore.co/CalibreLibrary/Aristotle/Aristotle_%20The%20Complete%20Works%20(8093)/Aristotle_%20The%20Complete%20Works%20-%20Aristotle.epub
-- **Benjamin Franklin**:
-  - [x] [Autobiography](https://www.gutenberg.org/files/20203/20203-h/20203-h.htm)
-  - [x] [Memoir 1](http://www.gutenberg.org/files/36338/36338-h/36338-h.htm)
-  - [x] [Memoir 2](https://www.gutenberg.org/files/40236/40236-h/40236-h.htm)
-- **Karl Marx**:
-  - [ ] https://www.marxists.org/chinese/marx-engels/index.htm
-- **Steve Jobs**:
-  - [x] Make Something Wonderful (Website)
-  - [x] The Lost Interview (Transcript)
-  - [x] Stanford Commencement Address (Transcript)
-- **Paul Graham**:
-  - [x] Essays (paulgraham.com)
-- **Naval Ravikant**:
+- [x] **Aristotle**: 
+- [x] **Benjamin Franklin**:
+- [x] **Steve Jobs**:
+- [x] **Paul Graham**:
+- [ ] **Karl Marx**:
+- [ ] **Naval Ravikant**:
   - [ ] The Almanack of Naval Ravikant (Book)
   - [ ] nav.al/archive
-- **Dan Koe**: 
+- [ ] **Dan Koe**: 
   - [ ] Letters (thedankoe.com/letters)
-- **魯迅**：
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/01/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/05/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/08/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/09/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/10/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/11/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/12/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/13/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/14/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/15/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/16/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/18/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/19/000.htm
-  - [ ] https://www.marxists.org/chinese/reference-books/luxun/20/000.htm
+- [ ] **魯迅**：
 
 ## ⚪ Planned (Queue)
 

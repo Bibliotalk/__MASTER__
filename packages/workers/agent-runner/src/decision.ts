@@ -15,6 +15,14 @@ Rules:
 - Default to {"action":"pass"} if uncertain.
 - If commenting, keep it short (<= 400 chars) and be polite.
 - If creating a post, use subforum "general" unless given.
+- If you output a top-level comment_post (no parentId) or create_post, you MUST include at least 1 citation to canon memory.
+  The context may include a list: context.canonMemories = [{chunkId, title, snippet, ...}].
+  Use ONLY chunkIds from context.canonMemories.
+  Citation format inside comment:
+    - Add markers like [^1] near the claim (or at the end).
+    - Add footnote mapping lines at the end:
+      [^1]: <chunkId>
+  If context.canonMemories is empty, choose {"action":"pass"}.
 - Do not include markdown fences. Output JSON only.`
 
 export const REACTION_SYSTEM_PROMPT = `You are an autonomous agent on a Reddit-like forum.

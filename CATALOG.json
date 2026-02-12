@@ -18,12 +18,20 @@
   "Karl Marx": {
     "avatar": "https://hips.hearstapps.com/hmg-prod/images/gettyimages-515410892.jpg?crop=1xw:0.75xh;center,top&resize=1200:*",
     "bio": "German philosopher and political economist; a key figure in socialist theory.",
-    "sources": ["https://www.marxists.org/chinese/marx-engels/index.htm"]
+    "sources": [
+      "https://raw.githubusercontent.com/ProletRevDicta/Prolet/master/A0%20%E9%A9%AC%E5%85%8B%E6%80%9D%E3%80%81%E6%81%A9%E6%A0%BC%E6%96%AF/%E9%A9%AC%E5%85%8B%E6%80%9D%E6%81%A9%E6%A0%BC%E6%96%AF%E9%80%89%E9%9B%86%201972%20%E7%AC%AC1%E5%8D%B7.txt",
+      "https://github.com/ProletRevDicta/Prolet/raw/refs/heads/master/A0%20%E9%A9%AC%E5%85%8B%E6%80%9D%E3%80%81%E6%81%A9%E6%A0%BC%E6%96%AF/%E9%A9%AC%E5%85%8B%E6%80%9D%E6%81%A9%E6%A0%BC%E6%96%AF%E9%80%89%E9%9B%86%201972%20%E7%AC%AC2%E5%8D%B7.txt",
+      "https://github.com/ProletRevDicta/Prolet/raw/refs/heads/master/A0%20%E9%A9%AC%E5%85%8B%E6%80%9D%E3%80%81%E6%81%A9%E6%A0%BC%E6%96%AF/%E9%A9%AC%E5%85%8B%E6%80%9D%E6%81%A9%E6%A0%BC%E6%96%AF%E9%80%89%E9%9B%86%201972%20%E7%AC%AC3%E5%8D%B7.txt",
+      "https://github.com/ProletRevDicta/Prolet/raw/refs/heads/master/A0%20%E9%A9%AC%E5%85%8B%E6%80%9D%E3%80%81%E6%81%A9%E6%A0%BC%E6%96%AF/%E9%A9%AC%E5%85%8B%E6%80%9D%E6%81%A9%E6%A0%BC%E6%96%AF%E9%80%89%E9%9B%86%201972%20%E7%AC%AC3%E5%8D%B7.txt"
+    ]
   },
   "Naval Ravikant": {
     "avatar": "https://signal-api.nfx.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFHIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--386352720bd06c69be04c0faf5743b325d2aec66/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2hxY0djNkUzSmxjMmw2WlY5MGIxOW1hV3hzV3dkcEFsZ0NhUUpZQWc9PSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f8e22238db523e6e5e5a8ae643921849c4b207bd/0",
     "bio": "Entrepreneur and investor; essays and notes on wealth, happiness, and leverage.",
-    "sources": ["https://nav.al/archive"]
+    "sources": [
+      "https://github.com/no-today/books/raw/refs/heads/main/book/%E7%BA%B3%E7%93%A6%E5%B0%94%E5%AE%9D%E5%85%B8.epub",
+      "https://nav.al/archive"
+    ]
   },
   "Paul Graham": {
     "avatar": "https://s.turbifycdn.com/aah/paulgraham/bio-19.gif",
@@ -42,13 +50,7 @@
     "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl2rtNzUBK6QSFUlPyEPT_ZDGR0l25KS6HIu_v55hbPUqQrgnHbp8Cq4edHa54Mn1FYqARJWR4kddju2w2Dn4Zld9O20n754PpCm135Q&s=10",
     "bio": "中國現代文學奠基者之一；以雜文與小說批判時代、啟發思想。",
     "sources": [
-      "https://www.marxists.org/chinese/reference-books/luxun/01/000.htm",
-      "https://www.marxists.org/chinese/reference-books/luxun/05/000.htm",
-      "https://www.marxists.org/chinese/reference-books/luxun/08/000.htm",
-      "https://www.marxists.org/chinese/reference-books/luxun/14/000.htm",
-      "https://www.marxists.org/chinese/reference-books/luxun/15/000.htm",
-      "https://www.marxists.org/chinese/reference-books/luxun/18/000.htm",
-      "https://www.marxists.org/chinese/reference-books/luxun/19/000.htm"
+      "https://github.com/NicholasBxt/FreeBook--/raw/refs/heads/master/%E9%B2%81%E8%BF%85%E5%85%A8%E9%9B%86%EF%BC%88%E5%85%A820%E5%86%8C%EF%BC%89.epub"
     ]
   },
   "徐志摩": {
