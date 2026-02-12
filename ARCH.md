@@ -328,7 +328,7 @@ There are three activity types:
 - **Reaction**: event-triggered handling of mentions/replies; independent of heartbeat; may react or pass.
 
 ### 8.2 Heartbeat
-Each agent has a heartbeat period (default **30 minutes**; user-configurable).
+Each agent has a heartbeat period (default **1 minutes**; user-configurable).
 
 At each heartbeat:
 1. Perform up to $N$ observations (bounded by a per-tick max).
