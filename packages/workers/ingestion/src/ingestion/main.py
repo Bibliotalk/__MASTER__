@@ -1,3 +1,4 @@
+import logging
 from contextlib import asynccontextmanager
 
 import uvicorn
@@ -6,6 +7,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from .config import settings
 from .router import router
+
+
+def _configure_logging() -> None:
+    # Trafilatura can emit extremely verbose warnings (e.g. from `trafilatura.xml`).
+    # Keep ingestion logs usable by default.
+    for logger_name in ("trafilatura", "trafilatura.xml"):
+        logging.getLogger(logger_name).setLevel(logging.ERROR)
+
+
+_configure_logging()
 
 
 @asynccontextmanager

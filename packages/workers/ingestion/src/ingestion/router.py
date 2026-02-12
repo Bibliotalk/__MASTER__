@@ -33,6 +33,11 @@ async def verify_worker_secret(request: Request) -> None:
 # Jobs
 # ---------------------------------------------------------------------------
 
+
+@router.get("/health", dependencies=[Depends(verify_worker_secret)])
+async def health() -> dict:
+    return {"status": "ok"}
+
 @router.post("/sources/add", status_code=201, dependencies=[Depends(verify_worker_secret)])
 async def create_job(body: CreateJobRequest) -> dict:
     """Create and start an ingestion job."""
