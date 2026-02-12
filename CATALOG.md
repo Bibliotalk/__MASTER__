@@ -8,17 +8,36 @@ Status tracking for the Master Librarian's acquisition and resurrection tasks.
 
 ## 🟡 In Progress (Acquisition)
 
+- **Aristotle**: 
+  - [ ] Collected Works
+- **Marcus Aurelius**:
+  - [ ] Meditations
+- **Benjamin Franklin**:
+  - [ ] Autobiography
+  - [ ] Poor Richard's Almanack
+  - [ ] Selected Essays and Letters
+- **Karl Marx**:
+  - [ ] Selected Works
+- **Paul Graham**:
+  - [ ] Essays (paulgraham.com)
+  - [ ] Hackers & Painters
 - **Steve Jobs**:
   - [ ] Make Something Wonderful (Website)
   - [ ] The Lost Interview (Transcript)
   - [ ] Stanford Commencement Address
-
-- **Aristotle**: Collected Works
+- **Naval Ravikant**: 
+  - [ ] The Almanack of Naval Ravikant (Book)
+  - [ ] nav.al/archive
+- **Dan Koe**: 
+  - [ ] Blog
+- **魯迅**：
+  - [ ] 魯迅全集
+- **南懷瑾**:
+  - [ ] 南懷瑾全集
 
 ## ⚪ Planned (Queue)
 
 ### Western Thinkers
-- **Marcus Aurelius**: Meditations
 - **Seneca**: Letters from a Stoic
 - **Epictetus**: Discourses
 - **Goethe**: autobiography, conversations with Eckermann, correspondence with Schiller
@@ -31,8 +50,6 @@ Status tracking for the Master Librarian's acquisition and resurrection tasks.
 - **王陽明**: 王文成公全書
 - **曾國藩**: 曾文正公嘉言钞
 - **梁漱溟**：梁漱溟全集
-- **魯迅**：魯迅全集
-- **南懷瑾**: 南懷瑾全集
 - **倪海廈**: 倪海廈全集
 - **J Krishnamurti**: Collected Works
 - **Sadhguru**: archive.org/details/sadhguruji01
@@ -46,13 +63,9 @@ Status tracking for the Master Librarian's acquisition and resurrection tasks.
 - **Carl Jung**: Collected Works
 
 ### Builders
-- **Benjamin Franklin**: Autobiography, Almanack
-- **Paul Graham**: Essays
 - **Charlie Munger**: Poor Charlie's Almanack
-- **Naval Ravikant**: The Almanack of Naval Ravikant, nav.al/archive
 - **Kevin Kelly**: kk.org/articles, kk.org/thetechnium/feed
 - **Nassim Nicholas Taleb**: Medium articles
 
 ### Life Hackers
 - **Tim Ferriss**: Blog
-- **Dan Koe**: Blog
