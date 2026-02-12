@@ -1,23 +1,25 @@
-# Production deployment (Vercel Web + Fly.io API + Turso)
+# Production deployment (Vercel Web + Fly.io API + Supabase Postgres)
 
 This runbook deploys:
 
 - Web: Vercel (Next.js)
 - API (+ in-process autonomy runner): Fly.io (Node)
-- DB: Turso (LibSQL)
+- DB: Supabase (Postgres)
 
 Ingestion is omitted for now.
 
 ---
 
-## 1) Create the Turso database
+## 1) Create the Supabase project
 
-1. Create a new Turso database.
+1. Create a new Supabase project.
 2. Get:
-   - `DATABASE_URL` (LibSQL URL)
-   - `DATABASE_AUTH_TOKEN` (token)
+  - `DATABASE_URL` (pooled connection string — typically `*.pooler.supabase.com`)
+  - `DIRECT_URL` (direct connection string — typically `db.<projectref>.supabase.co`)
 
-The API supports passing the token separately via `DATABASE_AUTH_TOKEN` (recommended).
+Why two URLs:
+- `DATABASE_URL` is best for the running app (pooler).
+- `DIRECT_URL` is best for Prisma schema operations (migrations/db push) because some operations can be incompatible with poolers.
 
 ---
 
@@ -56,14 +58,14 @@ Required (production secrets):
 
 Database:
 
-- `DATABASE_URL=<your-turso-libsql-url>`
-- `DATABASE_AUTH_TOKEN=<your-turso-token>`
+- `DATABASE_URL=<your-supabase-pooled-connection-string>`
+- `DIRECT_URL=<your-supabase-direct-connection-string>`
 
 SecondMe:
 
 - `SECONDME_CLIENT_ID=...`
 - `SECONDME_CLIENT_SECRET=...`
-- `SECONDME_REDIRECT_URI=https://<your-vercel-domain>/api/auth/callback`
+- `SECONDME_REDIRECT_URI=https://<your-frontend-domain>/api/auth/callback`
 - `SECONDME_API_BASE=https://app.mindos.com/gate/lab` (default)
 - `SECONDME_OAUTH_URL=https://go.second.me/oauth/` (default)
 
@@ -87,9 +89,13 @@ Ingestion (omitted):
 
 After the app is deployed and secrets are set, run a one-off command:
 
-- `fly ssh console -C "yarn db:deploy"`
+- `fly ssh console -C "sh -lc 'cd /app && yarn db:deploy'"`
 
 (You can re-run safely on subsequent deploys.)
+
+Notes:
+- `fly ssh console -C` executes a single binary; use `sh -lc` if you need shell features like `cd`.
+- `yarn db:deploy` uses Prisma to apply the current schema to the database.
 
 ### 2.5 Verify API health
 
@@ -107,13 +113,17 @@ Create a Vercel project:
 
 Environment variables (Web):
 
-- `API_URL=https://<your-railway-api-domain>`
+- `API_URL=https://<your-fly-app>.fly.dev`
 
 Example:
 
 - `API_URL=https://<your-fly-app>.fly.dev`
 
 This is used by the rewrite in `packages/web/next.config.js` to forward `/api/*` to the API service.
+
+Important:
+- Do not include a trailing slash in `API_URL` (e.g. use `https://app.fly.dev`, not `https://app.fly.dev/`).
+  A trailing slash can produce `//api/...` paths on the API, which may 404.
 
 ---
 
@@ -139,6 +149,6 @@ Recommendation:
 
 ### 4.2 Filesystem & SQLite
 
-Production should not use local SQLite files. Turso replaces `file:./dev.db`.
+Production should not use local SQLite files. Supabase replaces `file:./dev.db`.
 
 Fly/Vercel filesystems are not suitable for persistent caches; use external storage if you later re-enable ingestion.
