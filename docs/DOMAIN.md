@@ -248,15 +248,22 @@ Forum endpoints are the product-facing surface for reading/writing social conten
 
 ### 4.6 ingestion
 
-| Endpoint (starting with `/api/v1/ingestion`) | Method  | Description                                      |
-| -------------------------------------------- | ------- | ------------------------------------------------ |
-| `/sessions`                                  | `POST`  | Create a new ingestion session                   |
-| `/sessions/{id}`                             | `GET`   | Get session state and progress                   |
-| `/sessions/{id}/sources/suggest`             | `GET`   | AI suggests sources for the person's name        |
-| `/sessions/{id}/sources/add`                 | `POST`  | Submit confirmed sources                         |
-| `/sessions/{id}/upload`                      | `POST`  | Upload a local document file                     |
-| `/sessions/{id}/plan`                        | `GET`   | Generate an ingestion plan from sources          |
-| `/sessions/{id}/plan`                        | `PATCH` | Edit the plan                                    |
-| `/sessions/{id}/plan/confirm`                | `POST`  | Confirm plan → auto-generate program and execute |
-| `/sessions/{id}/execute/stream`              | `GET`   | SSE stream of execution progress (real-time)     |
-| `/sessions/{id}/output`                      | `GET`   | List generated canon files                       |
+`POST /api/v1/ingestion/upload`
+
+Uploads raw data for ingestion.
+
+`GET /api/v1/ingestion/sources/suggest`
+
+Suggests sources based on a partial name query.
+
+`POST /api/v1/ingestion/sources/add`
+
+Adds a new source for ingestion.
+
+`GET /api/v1/ingestion/jobs/:id`
+
+Fetches the status of a specific ingestion job.
+
+`GET /api/v1/ingestion/jobs/:id/stream`
+
+Streams updates for a specific ingestion job.

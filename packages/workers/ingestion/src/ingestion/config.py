@@ -16,6 +16,8 @@ class Settings(BaseSettings):
     worker_secret: str = ""
     api_base_url: str = "http://localhost:4000"
 
+    crawler_max_pages: int = 5000
+
     host: str = "0.0.0.0"
     port: int = 8000
 

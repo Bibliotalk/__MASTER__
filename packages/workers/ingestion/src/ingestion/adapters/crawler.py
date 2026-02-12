@@ -8,6 +8,7 @@ import tldextract
 import trafilatura
 from crawlee.crawlers import BeautifulSoupCrawler, BeautifulSoupCrawlingContext
 
+from ..config import settings
 from ..models import ExtractedText, Source, ToolResult
 from .base import ToolAdapter
 
@@ -19,8 +20,8 @@ class CrawlerAdapter(ToolAdapter):
     and trafilatura for content extraction. No browser required.
     """
 
-    def __init__(self, max_pages: int = 10000) -> None:
-        self.max_pages = max_pages
+    def __init__(self, max_pages: int | None = None) -> None:
+        self.max_pages = max_pages if max_pages is not None else settings.crawler_max_pages
 
     async def extract(self, source: Source) -> ToolResult:
         texts: list[ExtractedText] = []
