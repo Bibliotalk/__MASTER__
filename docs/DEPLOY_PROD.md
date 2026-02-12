@@ -87,7 +87,7 @@ Ingestion (omitted):
 
 After the app is deployed and secrets are set, run a one-off command:
 
-- `fly ssh console -C "cd /app && yarn db:deploy"`
+- `fly ssh console -C "yarn db:deploy"`
 
 (You can re-run safely on subsequent deploys.)
 

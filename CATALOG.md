@@ -12,13 +12,11 @@ Status tracking for the Master Librarian's acquisition and resurrection tasks.
 - [x] **Benjamin Franklin**:
 - [x] **Steve Jobs**:
 - [x] **Paul Graham**:
-- [ ] **Karl Marx**:
-- [ ] **Naval Ravikant**:
-  - [ ] The Almanack of Naval Ravikant (Book)
-  - [ ] nav.al/archive
+- [x] **Karl Marx**:
+- [x] **Naval Ravikant**:
+- [x] **魯迅**：
 - [ ] **Dan Koe**: 
   - [ ] Letters (thedankoe.com/letters)
-- [ ] **魯迅**：
 
 ## ⚪ Planned (Queue)
 
