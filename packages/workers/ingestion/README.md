@@ -9,7 +9,7 @@ The ingestion worker automates the workflow of acquiring, processing, and archiv
 - **Web crawling** (blogs, essay collections)
 - **YouTube transcripts** (videos, playlists, channels)
 - **RSS feeds** (full-text article extraction)
-- **Document uploads** (EPUB, PDF, DOCX, TXT, MD, HTML, etc.)
+- **Documents** (EPUB, PDF, DOCX, TXT, MD, HTML, etc.) — via upload or direct HTTP(S) URL
 
 Each source is processed through a unified pipeline:
 
@@ -126,15 +126,17 @@ curl http://localhost:8000/api/v1/ingestion/sessions/abc123/output
 
 Environment variables (via `.env` or shell):
 
-| Variable               | Default                     | Description                                     |
-| ---------------------- | --------------------------- | ----------------------------------------------- |
-| `OPENAI_API_KEY`       | (required)                  | Your OpenAI API key                             |
-| `OPENAI_MODEL`         | `gpt-4o-mini`               | LLM model for planning & code generation        |
-| `OPENAI_BASE_URL`      | `https://api.openai.com/v1` | LLM API endpoint (supports compatible services) |
-| `INGESTION_DATA_DIR`   | `data`                      | Where sessions and uploads are stored           |
-| `INGESTION_OUTPUT_DIR` | `output`                    | Where canon archives are written                |
-| `INGESTION_HOST`       | `0.0.0.0`                   | Server host                                     |
-| `INGESTION_PORT`       | `8000`                      | Server port                                     |
+| Variable                           | Default                     | Description                                     |
+| ---------------------------------- | --------------------------- | ----------------------------------------------- |
+| `OPENAI_API_KEY`                   | (required)                  | Your OpenAI API key                             |
+| `OPENAI_MODEL`                     | `gpt-4o-mini`               | LLM model for planning & code generation        |
+| `OPENAI_BASE_URL`                  | `https://api.openai.com/v1` | LLM API endpoint (supports compatible services) |
+| `INGESTION_DATA_DIR`               | `data`                      | Where sessions and uploads are stored           |
+| `INGESTION_OUTPUT_DIR`             | `output`                    | Where canon archives are written                |
+| `INGESTION_DOC_MAX_BYTES`          | `104857600`                 | Max bytes to download for remote documents      |
+| `INGESTION_DOC_DOWNLOAD_TIMEOUT_S` | `60`                        | Timeout (seconds) for remote document downloads |
+| `INGESTION_HOST`                   | `0.0.0.0`                   | Server host                                     |
+| `INGESTION_PORT`                   | `8000`                      | Server port                                     |
 
 ## Architecture
 
@@ -145,7 +147,7 @@ Each source type is handled by an adapter:
 - **CrawlerAdapter** (`crawl4ai`) — Web crawling
 - **YouTubeAdapter** (`yt-dlp`) — YouTube transcripts
 - **RSSAdapter** (`feedparser` + `trafilatura`) — RSS feeds
-- **DocAdapter** (`markitdown`) — Uploaded documents
+- **DocAdapter** (`markitdown`) — Uploaded documents and remote HTTP(S) document URLs (cached under `data/downloads/`)
 
 ### Pipeline
 

@@ -108,10 +108,8 @@ class CrawlerAdapter(ToolAdapter):
 
         crawler = BeautifulSoupCrawler(
             max_requests_per_crawl=self.max_pages,
-            # Crawlee's underlying HTTP client can fail TLS handshakes on some sites
-            # (e.g. SelectedUnusableCipherSuiteForVersion). Keep retries low so we
-            # fall back quickly instead of stalling the entire ingestion job.
             max_request_retries=1,
+            max_crawl_depth=5,
             use_session_pool=False,
             request_handler_timeout=timedelta(seconds=30),
         )

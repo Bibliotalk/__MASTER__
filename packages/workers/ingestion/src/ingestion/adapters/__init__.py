@@ -1,6 +1,6 @@
 from .base import ToolAdapter
 from .crawler import CrawlerAdapter
-from .local_doc import DocAdapter
+from .doc import DocAdapter
 from .rss import RSSAdapter
 from .youtube import YouTubeAdapter
 

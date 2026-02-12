@@ -9,19 +9,19 @@ Status tracking for the Master Librarian's acquisition and resurrection tasks.
 ## 🟡 In Progress (Acquisition)
 
 - **Aristotle**: 
-  - [ ] https://classics.mit.edu/Browse/browse-Aristotle.html
+  - [x] https://isidore.co/CalibreLibrary/Aristotle/Aristotle_%20The%20Complete%20Works%20(8093)/Aristotle_%20The%20Complete%20Works%20-%20Aristotle.epub
 - **Benjamin Franklin**:
-  - [ ] [Autobiography](https://www.gutenberg.org/files/20203/20203-h/20203-h.htm)
-  - [ ] [Memoir 1](http://www.gutenberg.org/files/36338/36338-h/36338-h.htm)
-  - [ ] [Memoir 2](https://www.gutenberg.org/files/40236/40236-h/40236-h.htm)
+  - [x] [Autobiography](https://www.gutenberg.org/files/20203/20203-h/20203-h.htm)
+  - [x] [Memoir 1](http://www.gutenberg.org/files/36338/36338-h/36338-h.htm)
+  - [x] [Memoir 2](https://www.gutenberg.org/files/40236/40236-h/40236-h.htm)
 - **Karl Marx**:
   - [ ] https://www.marxists.org/chinese/marx-engels/index.htm
 - **Steve Jobs**:
-  - [ ] Make Something Wonderful (Website)
-  - [ ] The Lost Interview (Transcript)
-  - [ ] Stanford Commencement Address (Transcript)
+  - [x] Make Something Wonderful (Website)
+  - [x] The Lost Interview (Transcript)
+  - [x] Stanford Commencement Address (Transcript)
 - **Paul Graham**:
-  - [ ] Essays (paulgraham.com)
+  - [x] Essays (paulgraham.com)
 - **Naval Ravikant**:
   - [ ] The Almanack of Naval Ravikant (Book)
   - [ ] nav.al/archive

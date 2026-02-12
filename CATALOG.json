@@ -1,6 +1,13 @@
 {
+  "Aristotle": {
+    "avatar": "https://i0.wp.com/literariness.org/wp-content/uploads/2019/04/84469b33a7827daa536dd0056749f83e.jpg",
+    "bio": "Ancient Greek philosopher; foundational works in logic, ethics, metaphysics, and politics.",
+    "sources": [
+      "https://isidore.co/CalibreLibrary/Aristotle/Aristotle_%20The%20Complete%20Works%20(8093)/Aristotle_%20The%20Complete%20Works%20-%20Aristotle.epub"
+    ]
+  },
   "Benjamin Franklin": {
-    "avatar": "",
+    "avatar": "https://cdn.prod.website-files.com/68f6eecba3159a00eafd8026/693facba371c33bb1f316f80_Cydcor-Five-Lessons-From-Benjamin-Franklin.jpeg",
     "bio": "American polymath and Founding Father; writer, inventor, and statesman.",
     "sources": [
       "https://www.gutenberg.org/files/20203/20203-h/20203-h.htm",
@@ -8,28 +15,51 @@
       "https://www.gutenberg.org/files/40236/40236-h/40236-h.htm"
     ]
   },
+  "Karl Marx": {
+    "avatar": "https://hips.hearstapps.com/hmg-prod/images/gettyimages-515410892.jpg?crop=1xw:0.75xh;center,top&resize=1200:*",
+    "bio": "German philosopher and political economist; a key figure in socialist theory.",
+    "sources": ["https://www.marxists.org/chinese/marx-engels/index.htm"]
+  },
+  "Naval Ravikant": {
+    "avatar": "https://signal-api.nfx.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFHIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--386352720bd06c69be04c0faf5743b325d2aec66/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2hxY0djNkUzSmxjMmw2WlY5MGIxOW1hV3hzV3dkcEFsZ0NhUUpZQWc9PSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f8e22238db523e6e5e5a8ae643921849c4b207bd/0",
+    "bio": "Entrepreneur and investor; essays and notes on wealth, happiness, and leverage.",
+    "sources": ["https://nav.al/archive"]
+  },
   "Paul Graham": {
-    "avatar": "",
+    "avatar": "https://s.turbifycdn.com/aah/paulgraham/bio-19.gif",
     "bio": "Essayist and programmer; co-founder of Y Combinator.",
     "sources": ["https://paulgraham.com/articles.html"]
   },
   "Steve Jobs": {
-    "avatar": "",
+    "avatar": "https://res.cloudinary.com/dd3imqqn7/image/upload/c_limit,w_1920/f_auto/q_auto/v1745841110/BlogMedia/1745841109746-Stevejobsglasses_eqy7en?_a=BAVMn6ID0",
     "bio": "Co-founder of Apple; product visionary and keynote speaker.",
     "sources": [
       "https://xibadke9yj127edz.public.blob.vercel-storage.com/Make%20Something%20Wonderful%20-%20Steve%20Jobs-JPwGLMXERzQnb9bjkciA3dXITgbHXC.epub",
       "https://www.youtube.com/playlist?list=PLpP6AHh9my4WdhEt26pRWeYF0pGjHqNC8"
     ]
   },
+  "魯迅": {
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl2rtNzUBK6QSFUlPyEPT_ZDGR0l25KS6HIu_v55hbPUqQrgnHbp8Cq4edHa54Mn1FYqARJWR4kddju2w2Dn4Zld9O20n754PpCm135Q&s=10",
+    "bio": "中國現代文學奠基者之一；以雜文與小說批判時代、啟發思想。",
+    "sources": [
+      "https://www.marxists.org/chinese/reference-books/luxun/01/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/05/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/08/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/14/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/15/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/18/000.htm",
+      "https://www.marxists.org/chinese/reference-books/luxun/19/000.htm"
+    ]
+  },
   "徐志摩": {
-    "avatar": "",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6ty-KxzO9Jof6VMUAQS_3jcKeRIlxMgo8HA&s",
     "bio": "中國詩人與散文家；新月派代表人物之一。",
     "sources": [
       "https://zh.wikisource.org/zh-hant/Author:%E5%BE%90%E5%BF%97%E6%91%A9"
     ]
   },
   "林徽因": {
-    "avatar": "",
+    "avatar": "https://mrcdzg.com/uploads/images/20200604/8b16ca4a2c708895113fd1289ea7d55c.jpg",
     "bio": "中國建築師、詩人與作家；中國現代建築的先驅。",
     "sources": [
       "https://zh.wikisource.org/zh-hant/Author:%E6%9E%97%E5%BE%BD%E5%9B%A0"

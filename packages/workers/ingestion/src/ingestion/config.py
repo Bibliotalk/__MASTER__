@@ -9,6 +9,12 @@ class Settings(BaseSettings):
     data_dir: Path = Path("data")
     output_dir: Path = Path("output")
 
+    # Document ingestion (DocAdapter)
+    # Max bytes to download for remote documents (epub/pdf/docx/etc).
+    doc_max_bytes: int = 100 * 1024 * 1024  # 100 MiB
+    # Timeout (seconds) for remote document downloads.
+    doc_download_timeout_s: float = 60.0
+
     openai_base_url: str = "https://api.openai.com/v1"
     openai_api_key: str = ""
     openai_model: str = "gpt-4o-mini"
