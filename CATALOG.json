@@ -25,6 +25,11 @@
       "https://github.com/ProletRevDicta/Prolet/raw/refs/heads/master/A0%20%E9%A9%AC%E5%85%8B%E6%80%9D%E3%80%81%E6%81%A9%E6%A0%BC%E6%96%AF/%E9%A9%AC%E5%85%8B%E6%80%9D%E6%81%A9%E6%A0%BC%E6%96%AF%E9%80%89%E9%9B%86%201972%20%E7%AC%AC3%E5%8D%B7.txt"
     ]
   },
+  "Jiddu Krishnamurti": {
+    "avatar": "https://krishnamurtiretreat.org/wp-content/uploads/2018/04/20598-KFA-P.jpg",
+    "bio": "Philosopher and spiritual teacher; emphasized psychological revolution and freedom from conditioning.",
+    "sources": []
+  },
   "Naval Ravikant": {
     "avatar": "https://signal-api.nfx.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFHIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--386352720bd06c69be04c0faf5743b325d2aec66/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2hxY0djNkUzSmxjMmw2WlY5MGIxOW1hV3hzV3dkcEFsZ0NhUUpZQWc9PSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f8e22238db523e6e5e5a8ae643921849c4b207bd/0",
     "bio": "Entrepreneur and investor; essays and notes on wealth, happiness, and leverage.",
@@ -46,6 +51,26 @@
       "https://www.youtube.com/playlist?list=PLpP6AHh9my4WdhEt26pRWeYF0pGjHqNC8"
     ]
   },
+  "孔子": {
+    "avatar": "https://shoplineimg.com/5ec3858dce3ce20011787e14/60827314383b2d0032c1fd2b/800x.webp?source_format=jpg",
+    "bio": "春秋时期著名思想家、教育家与政治家；儒家学派的创始人。",
+    "sources": []
+  },
+  "王阳明": {
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/7/7a/%E7%8E%8B%E5%AE%88%E4%BB%81.jpg",
+    "bio": "明代哲学家、军事家与教育家；心学的主要代表人物。",
+    "sources": []
+  },
+  "曾国藩": {
+    "avatar": "https://static.nfapp.southcn.com/pic/201610/19/56ae5e6f-483b-4432-9c5d-b99e57c424e7.jpg.2",
+    "bio": "清朝晚期政治家、軍事家與文學家；湘軍的創建者。",
+    "sources": []
+  },
+  "苏轼": {
+    "avatar": "https://lh3.googleusercontent.com/proxy/gKdRqnfJVpnaT_K1JIf7bd7Wb8YvkT7O567eVRXsfzylmWY6hF-Slsj3Tt9GSqOdLGftQsdvGfhChtjb5M0c9GBpiJux-f68cKj-jog",
+    "bio": "北宋文学家、书画家与政治家；豪放派诗词的代表人物。",
+    "sources": []
+  },
   "魯迅": {
     "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl2rtNzUBK6QSFUlPyEPT_ZDGR0l25KS6HIu_v55hbPUqQrgnHbp8Cq4edHa54Mn1FYqARJWR4kddju2w2Dn4Zld9O20n754PpCm135Q&s=10",
     "bio": "中國現代文學奠基者之一；以雜文與小說批判時代、啟發思想。",
@@ -53,18 +78,44 @@
       "https://github.com/NicholasBxt/FreeBook--/raw/refs/heads/master/%E9%B2%81%E8%BF%85%E5%85%A8%E9%9B%86%EF%BC%88%E5%85%A820%E5%86%8C%EF%BC%89.epub"
     ]
   },
+  "梁启超": {
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Liang_Qichao_portrait.jpg/330px-Liang_Qichao_portrait.jpg",
+    "bio": "清末民初思想家、政治家與教育家；維新運動的重要推動者。",
+    "sources": []
+  },
   "徐志摩": {
     "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6ty-KxzO9Jof6VMUAQS_3jcKeRIlxMgo8HA&s",
     "bio": "中國詩人與散文家；新月派代表人物之一。",
-    "sources": [
-      "https://zh.wikisource.org/zh-hant/Author:%E5%BE%90%E5%BF%97%E6%91%A9"
-    ]
+    "sources": []
   },
   "林徽因": {
     "avatar": "https://mrcdzg.com/uploads/images/20200604/8b16ca4a2c708895113fd1289ea7d55c.jpg",
     "bio": "中國建築師、詩人與作家；中國現代建築的先驅。",
-    "sources": [
-      "https://zh.wikisource.org/zh-hant/Author:%E6%9E%97%E5%BE%BD%E5%9B%A0"
-    ]
+    "sources": []
+  },
+  "傅雷": {
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/a/a6/%E5%82%85%E9%9B%B7.jpg",
+    "bio": "中國著名翻譯家與文學評論家；以翻譯法國文學作品聞名。",
+    "sources": []
+  },
+  "王小波": {
+    "avatar": "https://static01.nyt.com/images/2022/07/14/books/review/ROVINGEYE_JOHNSON/ROVINGEYE_JOHNSON-jumbo.jpg",
+    "bio": "中國當代作家與思想家；以幽默犀利的文風探討社會與人性。",
+    "sources": []
+  },
+  "李小龙": {
+    "avatar": "https://32036258.s21i.faiusr.com/4/ABUIABAEGAAgzbShsQYomNWLoQQwmAQ4hgY.png",
+    "bio": "武术家、演员与哲学家；截拳道的创始人。",
+    "sources": []
+  },
+  "南怀瑾": {
+    "avatar": "https://p3.itc.cn/q_70/images03/20230318/1a77bb7e0ea940478d1afeb8053fd875.jpeg",
+    "bio": "中國當代著名的佛學家與國學大師；致力於傳播中華文化與佛教思想。",
+    "sources": []
+  },
+  "倪海厦": {
+    "avatar": "https://pic.rmb.bdstatic.com/bjh/250720/dump/9274efb2293c097cefbe5a15a5150ad2.jpeg?x-bce-process=image/auto-orient,o_1/resize,w_1242,limit_1/quality,Q_86/format,f_auto",
+    "bio": "當代著名中醫師與針灸大師；致力於中醫藥的研究與推廣。",
+    "sources": []
   }
 }
